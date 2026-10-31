@@ -46,7 +46,7 @@ T('محضر استلام وتسليم',W/2,205,50,'#fff',1,0,'center');
 let dy='';try{dy=new Date(r.date+'T00:00').toLocaleDateString('ar-AE-u-nu-latn',{weekday:'long'})}catch(e){}if(/Invalid/.test(dy))dy='';
 const ln=(xr,y,lb,v,w)=>{x.font='bold 24px '+F;let lw=x.measureText(lb).width,vx=xr-lw-14;T(lb,xr,y,24,D,1);x.setLineDash([2,5]);x.strokeStyle='#8a968f';x.lineWidth=1.5;x.beginPath();x.moveTo(vx,y+8);x.lineTo(xr-w,y+8);x.stroke();x.setLineDash([]);if(v)T(v,vx-4,y-2,25,D,1,vx-(xr-w)-10)};
 ln(R,300,'التاريخ:',r.date,520);ln(R-600,300,'اليوم:',dy,520);
-[['الألعاب النارية','الألعاب النارية',R],['الإشارات الضوئية','الإشارات الضوئية',R-380],['المتفجرات العابرة','المواد المتفجرة',R-760]].forEach(([lb,m,xr])=>{x.strokeStyle='#1b2a24';x.lineWidth=2.5;x.strokeRect(xr-46,350,46,46);if(r.cat==m){x.strokeStyle=G;x.lineWidth=6;x.beginPath();x.moveTo(xr-38,374);x.lineTo(xr-26,386);x.lineTo(xr-8,358);x.stroke()}T(lb,xr-62,384,26,D,1,300)});
+[['الألعاب النارية','الألعاب النارية',R],['الإشارات الضوئية','الإشارات الضوئية',R-380],['المتفجرات','المواد المتفجرة',R-760]].forEach(([lb,m,xr])=>{x.strokeStyle='#1b2a24';x.lineWidth=2.5;x.strokeRect(xr-46,350,46,46);if(r.cat==m){x.strokeStyle=G;x.lineWidth=6;x.beginPath();x.moveTo(xr-38,374);x.lineTo(xr-26,386);x.lineTo(xr-8,358);x.stroke()}T(lb,xr-62,384,26,D,1,300)});
 ln(R,470,'بموجب التصريح رقم:',r.pn,620);ln(R-660,470,'بتاريخ:',r.pd,460);
 ln(R,550,'الصادر عن شرطة:',r.iss,540);ln(R-580,550,'الممنوح لشركة:',r.gc,540);
 ln(R,630,'ومقرها:',r.hq,1120);
