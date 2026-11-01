@@ -33,7 +33,7 @@ const T=(t,px,y,sz,col,b,mw,al)=>{t=String(t);let s=sz;x.font=(b?'bold ':'')+s+'
 const V=v=>v==null||v===''?'—':v;
 const sec=(t,xr,y,w)=>{x.fillStyle='#eaf3ee';x.fillRect(xr-w,y,w,36);x.fillStyle=G;x.fillRect(xr-6,y,6,36);T(t,xr-18,y+26,22,G,1)};
 const bx=(xr,y,w,h)=>{x.strokeStyle='#d5dbd7';x.lineWidth=1.2;x.strokeRect(xr-w,y,w,h)};
-const gd=(xr,y,it,n,w,h)=>{let cw=w/n;it.forEach(([l,v],i)=>{let cx=xr-(i%n)*cw,cy=y+Math.floor(i/n)*h;bx(cx,cy,cw,h);T(l,cx-10,cy+19,14,'#6b7a72',0,cw-20);T(V(v),cx-10,cy+h-11,19,D,1,cw-20)});return y+Math.ceil(it.length/n)*h};
+const gd=(xr,y,it,n,w,h)=>{let cw=w/n;it.forEach(([l,v],i)=>{let cx=xr-(i%n)*cw,cy=y+Math.floor(i/n)*h;bx(cx,cy,cw,h);T(l,cx-10,cy+16,13,'#6b7a72',0,cw-20);T(V(v),cx-10,cy+h-10,19,D,1,cw-20)});return y+Math.ceil(it.length/n)*h};
 const tb=(xr,y,ws,hd,rows,rh)=>{let tw=ws.reduce((a,b)=>a+b,0);x.fillStyle='#eaf3ee';x.fillRect(xr-tw,y,tw,rh);[hd,...rows].forEach((row,ri)=>{let cx=xr;ws.forEach((w,ci)=>{bx(cx,y+ri*rh,w,rh);T(V(row[ci]),cx-w/2,y+ri*rh+rh/2+6,ri?17:16,ri?D:G,1,w-12,'center');cx-=w})});return y+(rows.length+1)*rh};
 x.fillStyle='#fff';x.fillRect(0,0,W,H);
 const im=u=>new Promise(ok=>{let i=new Image();i.onload=()=>ok(i);i.src=u});const [hi,fi]=await Promise.all([im(HDR),im(FTR)]);x.drawImage(hi,0,0,W,hi.naturalHeight*W/hi.naturalWidth);const fh=fi.naturalHeight*W/fi.naturalWidth;x.drawImage(fi,0,H-fh,W,fh);
@@ -42,13 +42,13 @@ let dy='';try{dy=new Date(r.date+'T00:00').toLocaleDateString('ar-AE-u-nu-latn',
 const dt=((dy||'')+' '+(r.date||'')).trim();
 x.fillStyle='#e9f1ec';x.strokeStyle='#0b5d45';x.lineWidth=2;x.beginPath();(x.roundRect||x.rect).call(x,L,254,300,46,23);x.fill();x.stroke();T('مهمة رقم '+V(r.mn),L+150,287,24,'#0b5d45',1,270,'center');
 const mins=Math.round((r.h||0)*60),tot=mins?Math.floor(mins/60)+' ساعة و'+(mins%60)+' دقيقة':'';
-let y=316;sec('بيانات المهمة',R,y,W-120);y=gd(R,y+36,[['اليوم والتاريخ',dt],['طبيعة المهمة',r.ann],['نوع المهمة',r.cat],['خط السير – من',r.fr],['خط السير – إلى',r.to],['الحالة',r.dir],['المسار',r.md],['النطاق',r.sc],['رقم التصريح',r.pn],['نوع التصريح',r.pt],['تاريخ التصريح',r.pd],['الصادر عن',r.iss],['الممنوح لشركة',r.gc],['مقرها',r.hq],['الجهة المصدرة',r.src],['الجهة المستهلكة',r.dst],['بداية المهمة',r.s],['وقت تحرك الشحنة',r.mv],['وقت العودة',r.e],['إجمالي زمن المهمة',tot],['مسافة النقل',r.km],['الكمية',r.qty],['الكمية بالوزن',r.wt],['تسليم',r.tk],['استلام',r.ik],['تم تسليم الشحنة إلى',r.tm],['رقم الحدث – البلاغ',r.ev]],5,W-120,44)+6;
-sec('الأفراد القائمين على المهمة',R,y,672);tb(R,y+36,[200,110,130,232],['الصفة','الرقم','الرتبة','الاسم'],P.map(p=>[p[1],r[p[2]],r[p[3]],r[p[4]]]),25);
-sec('السيل',L+424,y,424);let sl=r.seals||[];tb(L+424,y+36,[50,190,184],['م','رقم السيل','رمز تأكيد القفل'],Array.from({length:6},(_,i)=>[sl[i]?i+1:'',sl[i]&&sl[i].n,sl[i]&&sl[i].c]),25);
-y+=36+(P.length+1)*25+6;
+let y=316;sec('بيانات المهمة',R,y,W-120);y=gd(R,y+36,[['اليوم والتاريخ',dt],['طبيعة المهمة',r.ann],['نوع المهمة',r.cat],['خط السير – من',r.fr],['خط السير – إلى',r.to],['الحالة',r.dir],['المسار',r.md],['النطاق',r.sc],['رقم التصريح',r.pn],['نوع التصريح',r.pt],['تاريخ التصريح',r.pd],['الصادر عن',r.iss],['الممنوح لشركة',r.gc],['مقرها',r.hq],['الجهة المصدرة',r.src],['الجهة المستهلكة',r.dst],['بداية المهمة',r.s],['وقت تحرك الشحنة',r.mv],['وقت العودة',r.e],['إجمالي زمن المهمة',tot],['مسافة النقل',r.km],['الكمية',r.qty],['الكمية بالوزن',r.wt],['تسليم',r.tk],['استلام',r.ik],['تم تسليم الشحنة إلى',r.tm],['رقم الحدث – البلاغ',r.ev]],5,W-120,47)+6;
+sec('الأفراد القائمين على المهمة',R,y,672);tb(R,y+36,[200,110,130,232],['الصفة','الرقم','الرتبة','الاسم'],P.map(p=>[p[1],r[p[2]],r[p[3]],r[p[4]]]),24);
+sec('السيل',L+424,y,424);let sl=r.seals||[];tb(L+424,y+36,[50,190,184],['م','رقم السيل','رمز تأكيد القفل'],Array.from({length:6},(_,i)=>[sl[i]?i+1:'',sl[i]&&sl[i].n,sl[i]&&sl[i].c]),24);
+y+=36+(P.length+1)*24+6;
 sec('معايير النجاح ونتائج التقييم',R,y,W-120);let ey=tb(R,y+36,[440,80,150,80,370],['معيار النجاح','الدرجة','مستوى التطبيق','المحقق','ملاحظات'],CR.map(([t,d],i)=>{let q=(r.cr||[])[i]||{};return[t,d,q.l,q.a,q.n]}),26);
 x.fillStyle='#eaf3ee';x.fillRect(L,ey,W-120,38);bx(R,ey,W-120,38);T('نتيجة العملية',R-16,ey+27,22,G,1);T(r.ok==null?'—':'\u202A'+r.ok+' / 100\u202C',L+140,ey+27,22,G,1,260,'center');y=ey+38+6;
-sec('الأجهزة والمعدات والدوريات المستخدمة',R,y,W-120);y=gd(R,y+36,[['أسلحة',r.wp],['ذخائر',r.am],['أجهزة اتصال',r.cm],['قيود يدوية',r.hc],['رقم النداء',r.call],['رقم الدورية',r.pat],['نوع الدورية',r.pty],['عدد الدوريات',r.pc],['المستوى الأمني',r.lv]],5,W-120,44)+6;
+sec('الأجهزة والمعدات والدوريات المستخدمة',R,y,W-120);y=gd(R,y+36,[['أسلحة',r.wp],['ذخائر',r.am],['أجهزة اتصال',r.cm],['قيود يدوية',r.hc],['رقم النداء',r.call],['رقم الدورية',r.pat],['نوع الدورية',r.pty],['عدد الدوريات',r.pc],['المستوى الأمني',r.lv]],5,W-120,47)+6;
 sec('التوثيق والملاحظات',R,y,W-120);y+=36;let nw=(W-140)/2;[['ملاحظات القائم بالمهمة',r.nt,R],['ملاحظات رئيس القسم',r.hn,R-nw-20]].forEach(([l,v,xr])=>{bx(xr,y,nw,80);T(l,xr-10,y+20,14,'#6b7a72');(v||'—').match(/.{1,52}/g).slice(0,2).forEach((t,i)=>T(t,xr-10,y+46+i*26,19,D,1))});y+=80+6;
 let sw=(W-120-28)/3;[['رئيس قسم تأمين المتفجرات والألعاب النارية',null]].forEach(([l,k],i)=>{let xr=R-i*(sw+14);bx(xr,y,sw,100);T(l,xr-10,y+22,14,'#6b7a72',0,sw-20);
 if(k){let cv=sg&&sg[k];if(cv){let q=Math.min((sw-30)/cv.width,64/cv.height),w=cv.width*q,h2=cv.height*q;x.drawImage(cv,xr-sw/2-w/2,y+30+(64-h2)/2,w,h2)}T([r[k+'r'],r[k]].filter(Boolean).join(' / ')||'—',xr-sw/2,y+118,17,D,1,sw-20,'center')}
